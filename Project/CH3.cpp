@@ -40,11 +40,13 @@ void Two_Stadium_Seating(void)
 	const float SEATS_B_PRICE = 12; //$12
 	const float SEATS_C_PRICE =  9;  //$9
 
-	cout << "Pleaes enter (separated by spaces) number of tickets sold for A,B and C: " << endl;
+	cout << "Please enter (separated by spaces) number of tickets sold for A,B and C (press enter when completed): " << endl;
 	cin >> seats_sold_a >> seats_sold_b >> seats_sold_c;
 
+	//Calculate total income
 	total_sales_income = (seats_sold_a * SEATS_A_PRICE) + (seats_sold_b * SEATS_B_PRICE) + (seats_sold_c * SEATS_C_PRICE);
 
+	//Per book challenge, set precision of decimal places, fixed and always show decimal point.
 	cout << setprecision(2) << fixed << showpoint;
 	cout << "Total Income: $" << total_sales_income << endl;
 }
