@@ -215,5 +215,10 @@ int main()
 	//Four_Average_Rainfall();
 	//Five_Male_Female_Percentages();
 	//Six_Ingredient_Adjuster();
+	//Seven_Box_Office();
+	//Eight_How_Many_Widgets();
+	//Nine_How_Many_Calories();
+	//Ten_Insurance();
+
 	return 0;
 }
