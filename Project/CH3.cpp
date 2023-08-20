@@ -12,6 +12,7 @@
 
 #include<iostream>
 #include<iomanip>
+#include<string>
 using namespace std;
 
 /****************** FUNCTION DEFINITIONS ******************/
@@ -134,6 +135,75 @@ void Six_Ingredient_Adjuster(void)
 	cout << "Sugar Cups: " << CUPS_SUGAR_ONE * cookies_to_make << endl;
 	cout << "Butter Cups: " << CUPS_BUTTER_ONE * cookies_to_make << endl;
 	cout << "Flour Cups: " << CUPS_FLOUR_ONE * cookies_to_make << endl;
+}
+
+void Seven_Box_Office(void)
+{
+	const float ADULT_TICKET_PRICE = 10.00f, CHILD_TICKET_PRICE = 6.00f, THEATER_PROFIT_FROM_GROSS = 0.20f;
+	string name_of_movie;
+	int adult_tickets_sold, child_tickets_sold;
+	float gross_box_office, net_box_office;
+
+	cout << "Please enter name of movie: ";
+	//As cin stops reading up to space in keyboard buffer, we need to use getline to support spaces.
+	getline(cin,name_of_movie);
+
+	cout << "Enter adult and child tickets sold, separated by spaces.  Press Enter when done: ";
+	cin >> adult_tickets_sold >> child_tickets_sold;
+
+	gross_box_office = (adult_tickets_sold * ADULT_TICKET_PRICE) + (child_tickets_sold * CHILD_TICKET_PRICE);
+	net_box_office = gross_box_office * THEATER_PROFIT_FROM_GROSS;
+
+	cout << endl << endl;
+
+	//The book requested to have content laid out in a certain way, hence the odd setup for the following cout code.
+	cout << "Movie Name:                 " << setw(10) << "\"" << name_of_movie << "\"\n";
+	cout << "Adult Tickets Sold:         " << setw(15) << adult_tickets_sold << endl;
+	cout << "Child Tickets Sold:         " << setw(15) << child_tickets_sold << endl;
+	cout << setprecision(2) << fixed;
+	cout << "Gross Box Office Profit:    " << setw(11) << "$ " << setw(7) << gross_box_office << endl;
+	cout << "Net Box Office Profit:      " << setw(11) << "$ " << setw(7) << net_box_office << endl;
+	cout << "Amount Paid to Distributor: " << setw(11) << "$ " << setw(7) << (gross_box_office - net_box_office) << endl;
+}
+
+void Eight_How_Many_Widgets(void)
+{
+	const float YOKON_WIDGET_WEIGH = 12.5f;
+	float pallet_weight_solo, pallet_weight_with_widgets;
+	int widget_weight;
+
+	cout << "Please enter Pallet weight by itself and with widgets (space separated, press enter when done): ";
+	cin >> pallet_weight_solo >> pallet_weight_with_widgets;
+
+	//Althought not explictly mentioned by book, it's odd to have a decimal for how many weights there are.
+	//In this instance, I decided to truncate result (maybe consider using round() ) to focus on whole number. 
+	widget_weight = (int)((pallet_weight_with_widgets - pallet_weight_solo) / YOKON_WIDGET_WEIGH);
+
+	cout << "Number of widgets = " << widget_weight << endl;
+
+}
+
+void Nine_How_Many_Calories(void)
+{
+	//300cal = 10 cookies.  One cookie should be 30cal, hence below constant.
+	const int CALORIES_PER_COOKIE = 30;
+	float cookies_consumed;
+
+	cout << "Enter the number of cookies you eaten (press enter when done): ";
+	cin >> cookies_consumed;
+
+	cout << "Calorie consumption: " << (cookies_consumed * CALORIES_PER_COOKIE) << "cal " << endl;
+}
+
+void Ten_Insurance(void)
+{
+	const float RECOMMENDED_INSURANCE_PERCENTAGE = 0.80f;
+	float replacement_cost;
+	cout << "Enter replacement cost for building (press enter when done) : $";
+	cin >> replacement_cost;
+
+	cout << setprecision(2) << fixed;
+	cout << "Insurance minimum recommended: $" << replacement_cost * RECOMMENDED_INSURANCE_PERCENTAGE << endl;
 }
 
 /****************** MAIN ******************/
