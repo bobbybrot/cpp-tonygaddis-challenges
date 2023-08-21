@@ -240,6 +240,16 @@ void Twelve_Celsius_To_Fahrenheit(void)
 
 }
 
+void Thirteen_Currency(void)
+{
+	const float YEN_PER_DOLLAR = 146.20f;
+	const float EUROS_PER_DOLLAR = 0.92f;
+
+	cout << setprecision(2) << fixed << showpoint;
+	cout << "USD to YEN  = " << YEN_PER_DOLLAR << endl;
+	cout << "USD to EURO = " << EUROS_PER_DOLLAR;
+}
+
 /****************** MAIN ******************/
 int main()
 {
@@ -255,6 +265,7 @@ int main()
 	//Ten_Insurance();
 	//Eleven_Automobile_Costs();
 	//Twelve_Celsius_To_Fahrenheit();
-	
+	//Thirteen_Currency();
+
 	return 0;
 }
