@@ -206,6 +206,40 @@ void Ten_Insurance(void)
 	cout << "Insurance minimum recommended: $" << replacement_cost * RECOMMENDED_INSURANCE_PERCENTAGE << endl;
 }
 
+void Eleven_Automobile_Costs(void)
+{
+	const float MONTHS_IN_YEARS = 12;
+	float loan, insurance, gas, oil, tires, maintenance, grand_monthly_total;
+
+	//Ask and read monthly: loan, insurance, gas, oil, tires, maintenance
+	cout << "Please enter monthly cost for loan, insurance, gas, oil, tires and maintenance (space separated, enter when done)";
+	cin >> loan >> insurance >> gas >> oil >> tires >> maintenance;
+
+
+	//Calculate and display total 
+	grand_monthly_total = (loan + insurance + gas + oil + tires + maintenance);
+
+	//Calculate and display annual cost
+	cout << setprecision(2) << fixed;
+	cout << "\n Monthly cost: $" << grand_monthly_total << endl;
+	cout << "Yearly cost: $" << (grand_monthly_total * 12) << endl;
+}
+
+void Twelve_Celsius_To_Fahrenheit(void)
+{
+	float celcius, fahrenheit;
+	
+	cout << "Enter Celcius and I will convert into Fahrenheit:";
+	cin >> celcius;
+
+	//A sneaky one here, the (9/5) results in int output and decimal being truncated.
+	//Got around it by having one literal set as float, as dividing float with int results in float output.
+	fahrenheit = (9.0f/5) * celcius + 32;
+
+	cout << "Fahrenheit: " << fahrenheit << endl;
+
+}
+
 /****************** MAIN ******************/
 int main()
 {
@@ -219,6 +253,8 @@ int main()
 	//Eight_How_Many_Widgets();
 	//Nine_How_Many_Calories();
 	//Ten_Insurance();
-
+	//Eleven_Automobile_Costs();
+	//Twelve_Celsius_To_Fahrenheit();
+	
 	return 0;
 }
