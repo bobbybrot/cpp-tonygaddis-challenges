@@ -250,6 +250,35 @@ void Thirteen_Currency(void)
 	cout << "USD to EURO = " << EUROS_PER_DOLLAR;
 }
 
+void Fourteen_Monthly_Sales_Tax(void)
+{
+	const float TOTAL_TAX = 0.06f, STATE_TAX = .04f, COUNTY_TAX = .02f;
+	string month;
+	int year;
+	float total_income, total_tax, final_sales, sales_state_tax, sales_county_tax;
+
+	cout << "Please enter month, year and sales (space separated, press enter when done): ";
+	cin >> month >> year >> total_income;
+
+	//When attempting example given by book, the answers were off mark.
+	//I attempted to optimize my calculations, but wasn't close enough still using example numbers.
+	//I tested with 10000 as total_income, with all calculations being as expected.
+	total_tax = total_income * TOTAL_TAX;
+	final_sales = total_income - total_tax;
+	sales_state_tax = total_income * STATE_TAX;
+	sales_county_tax = total_income * COUNTY_TAX;
+
+	cout << endl << setprecision(2) << fixed << showpoint;
+
+	cout << "Month:  " << month << endl;
+	cout << "--------------------" << endl;
+	cout << "Total Collected:  " << setw(10) << "$" << setw(9) << total_income << endl;
+	cout << "Sales:            " << setw(10) << "$" << setw(9) << final_sales << endl;
+	cout << "County Sales Tax: " << setw(10) << "$" << setw(9) << sales_county_tax << endl;
+	cout << "State Sales Tax:  " << setw(10) << "$" << setw(9) << sales_state_tax << endl;
+	cout << "Total Sales Tax:  " << setw(10) << "$" << setw(9) << total_tax << endl;
+}
+
 /****************** MAIN ******************/
 int main()
 {
@@ -266,6 +295,6 @@ int main()
 	//Eleven_Automobile_Costs();
 	//Twelve_Celsius_To_Fahrenheit();
 	//Thirteen_Currency();
-
+	Fourteen_Monthly_Sales_Tax();
 	return 0;
 }
