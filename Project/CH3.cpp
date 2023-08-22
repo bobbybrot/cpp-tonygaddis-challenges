@@ -279,6 +279,24 @@ void Fourteen_Monthly_Sales_Tax(void)
 	cout << "Total Sales Tax:  " << setw(10) << "$" << setw(9) << total_tax << endl;
 }
 
+void Fifteen_Property_Tax(void)
+{
+	const float PROPERTY_TAX_OF_ASSESSMENT = 0.75f;
+	const float ASSESSMENT_VALUE_OF_LAND_VALUE = 0.60f;
+	float acre_land_value, assessment_value, property_tax;
+
+	cout << "Please enter acre land value = ";
+	cin >> acre_land_value;
+
+	assessment_value = acre_land_value * ASSESSMENT_VALUE_OF_LAND_VALUE;
+	property_tax = (assessment_value / 100) * PROPERTY_TAX_OF_ASSESSMENT;
+
+	cout << setprecision(2) << fixed << showpoint;
+	cout << "Assessment Value = $" << setw(8) << assessment_value << endl;
+	cout << "Property Tax =     $" << setw(8) << property_tax << endl;
+
+}
+
 /****************** MAIN ******************/
 int main()
 {
@@ -295,6 +313,7 @@ int main()
 	//Eleven_Automobile_Costs();
 	//Twelve_Celsius_To_Fahrenheit();
 	//Thirteen_Currency();
-	Fourteen_Monthly_Sales_Tax();
+	//Fourteen_Monthly_Sales_Tax();
+	Fifteen_Property_Tax();
 	return 0;
 }
