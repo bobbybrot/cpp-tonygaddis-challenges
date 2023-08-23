@@ -13,6 +13,8 @@
 #include<iostream>
 #include<iomanip>
 #include<string>
+#include<cstdlib>
+#include<ctime>
 using namespace std;
 
 /****************** FUNCTION DEFINITIONS ******************/
@@ -297,6 +299,50 @@ void Fifteen_Property_Tax(void)
 
 }
 
+void Sixteen_Senior_Tax(void)
+{
+	const float ASSESSMENT_VALUE_OF_LAND_VALUE = 0.60f;
+	const float SENIOR_EXCEMPTION = 5000;
+	const float EQUAL_PAYMENTS_MONTHLY = 4;
+	float property_value, current_tax_rate_per_hundred;
+	float assessment_value, property_tax, installment_price;
+
+	cout << "Enter value of property: $";
+	cin >> property_value;
+	cout << "Enter tax rate per $100: $";
+	cin >> current_tax_rate_per_hundred;
+	cout << endl;
+
+	assessment_value = (property_value * ASSESSMENT_VALUE_OF_LAND_VALUE) - SENIOR_EXCEMPTION;
+	property_tax = (assessment_value/100) * current_tax_rate_per_hundred;
+	installment_price = property_tax / EQUAL_PAYMENTS_MONTHLY;
+
+	cout << setprecision(2) << fixed << showpoint;
+	cout << "Annual Property Tax = $" << property_tax << endl;
+	cout << "Installment Price = $" << installment_price << endl;
+}
+
+void Seventeen_Math_Tutor(void)
+{
+	const int MAX_RANGE = 1000, MIN_RANGE = 1;
+	int random_one, random_two, total;
+	//Random generation seed setup
+	unsigned int seed = (unsigned int) time(0);
+	srand(seed);
+
+	random_one = (rand() % (MAX_RANGE - MIN_RANGE + 1)) + MIN_RANGE;
+	random_two = (rand() % (MAX_RANGE - MIN_RANGE + 1)) + MIN_RANGE;
+	total = random_one + random_two;
+
+	cout << " " << random_one << endl;
+	cout << "+" << random_two << endl;
+	cout << "-----";
+	cin.ignore(); //Wait for user input
+
+	cout << total << endl;
+
+}
+
 /****************** MAIN ******************/
 int main()
 {
@@ -314,6 +360,9 @@ int main()
 	//Twelve_Celsius_To_Fahrenheit();
 	//Thirteen_Currency();
 	//Fourteen_Monthly_Sales_Tax();
-	Fifteen_Property_Tax();
+	//Fifteen_Property_Tax();
+	//Sixteen_Senior_Tax();
+	//Seventeen_Math_Tutor();
+
 	return 0;
 }
