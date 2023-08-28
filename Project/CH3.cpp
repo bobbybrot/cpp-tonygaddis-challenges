@@ -15,6 +15,7 @@
 #include<string>
 #include<cstdlib>
 #include<ctime>
+#include<cmath>
 using namespace std;
 
 /****************** FUNCTION DEFINITIONS ******************/
@@ -343,6 +344,57 @@ void Seventeen_Math_Tutor(void)
 
 }
 
+void Eighteen_Interest_Earned(void)
+{
+	float principal, interest, interest_value, amount;
+	int interest_compounded;
+	cout << "Enter Principal, interest (E.G. 4.25%), compounded (space separated, enter when done):";
+	cin >> principal >> interest >> interest_compounded;
+
+	amount = principal * (float)pow((1 + ( (interest / 100) / interest_compounded)), interest_compounded);
+	interest_value = amount - principal;
+
+	cout << "Interest Rate:      " << setw(11) << interest << "%" << endl;
+	cout << "Times Compounded:   " << setw(11) << interest_compounded << endl;
+	cout << setprecision(2) << fixed;
+	cout << "Principal:          " << setw(3) << "$ " << setw(8) << principal << endl;
+	cout << "Interest:           " << setw(3) << "$ " << setw(8) << interest_value << endl;
+	cout << "Amount in Savings:  " << setw(3) << "$ " << setw(8) << amount << endl;
+}
+
+void Ninteen_Monthly_Payments(void)
+{
+	float annual_interest;
+	float n, l, rate;  //Variables used for book algorithm
+	float monthly_payment, paid_back, interest_paid;
+	float top, bottom; //Splits algorithm from book for easier reading.
+
+	cout << "Enter annual interest: ";
+	cin >> annual_interest;
+	cout << "Enter Months to Pay: ";
+	cin >> n;
+	cout << "Enter Loan Amount: ";
+	cin >> l;
+
+	rate = (annual_interest / 12) / 100;
+
+	//Based on algorithm presented by book, split calculations for easier reading.
+	
+	top = rate * pow((1 + rate), n);
+	bottom = ( pow((1 + rate), n) ) - 1;
+	monthly_payment = (top / bottom) * l;
+	paid_back = monthly_payment * n;
+	interest_paid = paid_back - l;
+	
+	cout << setprecision(2) << fixed << endl;
+	cout << "Loan Amount:           " << setw(3) << "$ " << setw(8) << l << endl;
+	cout << "Monthly Interest Rate: " << setw(10) << setprecision(0) << (rate * 100) << "%" << endl;
+	cout << "Number of Payments:    " << setw(11) << setprecision(0) << n << endl;
+	cout << setprecision(2) << fixed;
+	cout << "Monthly Payment:       " << setw(3) << "$ " << setw(8) << monthly_payment << endl;
+	cout << "Amount Paid Back:      " << setw(3) << "$ " << setw(8) << paid_back << endl;
+	cout << "Interest Paid:         " << setw(3) << "$ " << setw(8) << interest_paid << endl;
+}
 /****************** MAIN ******************/
 int main()
 {
@@ -363,6 +415,8 @@ int main()
 	//Fifteen_Property_Tax();
 	//Sixteen_Senior_Tax();
 	//Seventeen_Math_Tutor();
+	//Eighteen_Interest_Earned();
+	//Ninteen_Monthly_Payments();
 
 	return 0;
 }
