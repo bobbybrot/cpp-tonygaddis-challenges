@@ -395,6 +395,145 @@ void Ninteen_Monthly_Payments(void)
 	cout << "Amount Paid Back:      " << setw(3) << "$ " << setw(8) << paid_back << endl;
 	cout << "Interest Paid:         " << setw(3) << "$ " << setw(8) << interest_paid << endl;
 }
+
+void Twenty_Pizza_Pi(void)
+{
+	const float SLICE_AREA = 14.125f;
+	const float PI = 3.14159f;
+	const uint8_t HALF = 2;
+	float diameter;
+	float radius;
+	float area;
+	float slices;
+
+	cout << "Enter diameter: ";
+	cin >> diameter;
+
+	radius = diameter / (float)HALF;
+	area = PI * pow(radius, (float)HALF);
+	slices = area / SLICE_AREA;
+
+	cout << setprecision(1) << fixed;
+	cout << "Slices: " << slices << endl;
+}
+
+void Twentyone_How_Many_Pizzas(void)
+{
+	//This question copies and adapts previous exercise.
+	const float SLICE_AREA = 14.125f;
+	const float PI = 3.14159f;
+	const uint8_t HALF = 2;
+	const int SLICES_PER_PIZZA_AVG = 4;
+	float diameter;
+	int people;
+	float pizza_to_order;
+	float radius;
+	float area;
+	float slices;
+
+	cout << "Enter number of people arriving to party: ";
+	cin >> people;
+	cout << "Enter diameter of Pizza: ";
+	cin >> diameter;
+
+	radius = diameter / (float)HALF;
+	area = PI * pow(radius, (float)HALF);
+	slices = area / SLICE_AREA;
+
+	pizza_to_order = (people * SLICES_PER_PIZZA_AVG) / slices;
+
+	cout << setprecision(0) << fixed;
+	cout << pizza_to_order << " pizzas required" << endl;
+}
+
+void Twentytwo_Angle_Calculator(void)
+{
+	double radians;
+
+	cout << "Enter angle in radians: ";
+	cin >> radians;
+
+	cout << setprecision(4) << fixed;
+	cout << "Sine:   " << sin(radians) << endl;
+	cout << "Cosine: " << cos(radians) << endl;
+	cout << "Tan:    " << tan(radians) << endl;
+}
+
+void Twentythree_Stock_Transaction(void)
+{
+	const float JOE_STOCK_BUY = (45.50f * 1000);  //1000 being shares
+	const float BROKER_COMMISSION = 0.02f;
+	const float JOE_STOCK_SOLD = (56.90f * 1000);
+	float stock_profit = JOE_STOCK_SOLD - JOE_STOCK_BUY;
+	float total_commission = 0;
+	float final_profit = 0;
+	
+	cout << setprecision(2) << fixed;
+	cout << "Joe paid for stock: $ " << JOE_STOCK_BUY << endl;
+	
+	total_commission += (JOE_STOCK_BUY * BROKER_COMMISSION);
+	cout << "Joe Broker Commission (stock buy): $ " << total_commission << endl;
+	
+	cout << "Joe sold stock: $ " << JOE_STOCK_SOLD << endl;
+
+	total_commission += (JOE_STOCK_SOLD * BROKER_COMMISSION);
+	cout << "Joe Broker Commission (stock sell): $ " << (JOE_STOCK_SOLD * BROKER_COMMISSION) << endl;
+
+	final_profit = (stock_profit - total_commission);
+	cout << "Total profit: $" << final_profit;
+}
+
+void Twentyfour_Planting_Grapevine(void)
+{
+	float row_feet;
+	float assembly_space;
+	float vines_space;
+	float no_of_vines;
+
+	cout << "Enter Row in feet: ";
+	cin >> row_feet;
+	cout << "Enter end-post assembly space in feet: ";
+	cin >> assembly_space;
+	cout << "Enter space between vines in feet: ";
+	cin >> vines_space;
+
+	no_of_vines = (row_feet - (2 * assembly_space)) / vines_space;
+
+	cout << "Number of vines: " << no_of_vines << endl;
+}
+
+void Twentyfive_Word_Game(void)
+{
+	string name;
+	int age;
+	string city;
+	string college;
+	string profession;
+	string animal_type;
+	string pet_name;
+
+	cout << "Enter Name: ";
+	getline(cin, name);
+	cout << "Enter Age: ";
+	cin >> age;
+	cin.ignore(); // After performing cin, \n remains in keyboard buffer, thus ignore for next getline to work.
+	cout << "Enter City: ";
+	getline(cin, city);
+	cout << "Enter College: ";
+	getline(cin, college);
+	cout << "Enter Profession: ";
+	getline(cin, profession);
+	cout << "Enter type of Animal: ";
+	getline(cin, animal_type);
+	cout << "Enter Pet Name: ";
+	getline(cin, pet_name);
+
+	cout << "There once was a person named " << name << " who lived in " << city << ".  At the age of " << age << ",\n"
+		<< name << " went to college at " << college << ".  " << name << " graduated and went to work as a\n" << profession
+		<< ".  Then, " << name << " adopted a(n) " << animal_type << " named " << pet_name << ".  They both lived\nhappily"
+		" ever after!";
+}
+
 /****************** MAIN ******************/
 int main()
 {
@@ -417,6 +556,13 @@ int main()
 	//Seventeen_Math_Tutor();
 	//Eighteen_Interest_Earned();
 	//Ninteen_Monthly_Payments();
+	//Twenty_Pizza_Pi();
+	//Twentyone_How_Many_Pizzas();
+	//Twentytwo_Angle_Calculator();
+	//Twentythree_Stock_Transaction();
+	//Twentyfour_Planting_Grapevine();
+	//Twentyfive_Word_Game();
+	//END OF CHALLENGES FOR CHAPTER 3
 
 	return 0;
 }
