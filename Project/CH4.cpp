@@ -3,6 +3,11 @@
 * Book Pages: 151 - 231
 *
 * NOTE: Each programming challenge are separated into their own functions.
+*
+* XXX_YYY_YYY
+*
+* XXX  = Challenge Number (matching number in book)
+* YYY  = Name of challenge (matching challenge name from book).
 */
 
 #include<iostream>
