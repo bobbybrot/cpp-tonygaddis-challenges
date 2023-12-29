@@ -260,6 +260,109 @@ void Six_Mass_Weight(void)
 	(void)Six_Heavy_Little(weight);
 }
 
+int Seven_Min_Hours_Days(int seconds)
+{
+	const int MINUTE = 60;
+	const int HOUR   = 3600;
+	const int DAY    = 86400;
+
+	//Used for unit testing:
+	//0 = No output
+	//1 = Minutes
+	//2 = Hours
+	//3 = Days
+	int result = 0;
+
+	if (seconds < MINUTE)
+	{
+		result = 0;
+	}
+	else if ( (seconds < HOUR))
+	{
+		cout << "Minutes: " << ((float)seconds / MINUTE) << endl;
+		result = 1;
+	}
+	else if (seconds < DAY)
+	{
+		cout << "Hours: " << ((float)seconds / HOUR) << endl;
+		result = 2;
+	}
+	else if (seconds >= DAY)
+	{
+		cout << "Days: " << ((float)seconds / DAY) << endl;
+		result = 3;
+	}
+	return result;
+}
+
+void Seven_Time_Calculator(void)
+{
+	int seconds;
+	cout << "Enter seconds: ";
+	cin >> seconds;
+	cout << endl;
+
+	(void)Seven_Min_Hours_Days(seconds);
+}
+
+void Eight_Colour_Mixer(void)
+{
+	string iOne;
+	string iTwo;
+	int invalidInput = false;
+	cout << "Enter two primary colours (capital first letter), separated by spaces...";
+	cin >> iOne >> iTwo;
+
+	//Vet input
+	if ( (iOne == "Red") || (iOne == "Blue") || (iOne == "Yellow") )
+	{
+		if ( (iTwo == "Red") || (iTwo == "Blue") || (iTwo == "Yellow") )
+		{
+			//All inputs vetted.
+			if ((iOne == "Red") && (iTwo == "Blue"))
+			{
+				cout << "Purple" << endl;
+			}
+			else if ((iOne == "Red") && (iTwo == "Yellow"))
+			{
+				cout << "Orange" << endl;
+			}
+			else if ((iOne == "Blue") && (iTwo == "Yellow"))
+			{
+				cout << "Green" << endl;
+			}
+			else
+			{
+				//No requirement given for when no matching combination to above given, hence default output
+				cout << "No match" << endl;
+			}
+		}
+		else
+		{
+			invalidInput = true;
+		}
+	}
+	else
+	{
+		invalidInput = true;
+	}
+
+	if (invalidInput)
+	{
+		cout << "Error, invalid input... no action preformed!!!" << endl;
+	}
+}
+
+void Nine_Dollar_Game(void)
+{
+	//How many to make dollar???
+	//100 penies = 0.01
+	//20 nickels = 0.05
+	//10 dimes   = 0.01
+	//4 quarters = 0.25
+
+}
+
 int main() 
 {
 	//One_Minimum_Maximum();
@@ -267,7 +370,9 @@ int main()
 	//Three_Magic_Dates();
 	//Four_Area_Of_Rectangles();
 	//Five_Body_Max_Index();
-	Six_Mass_Weight();
+	//Six_Mass_Weight();
+	//Seven_Time_Calculator();
+	//Eight_Colour_Mixer();
 
 	return 0;
 }
