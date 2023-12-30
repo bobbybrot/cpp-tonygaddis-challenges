@@ -3,4 +3,4 @@ Code used to attempt programming challenges while studying "Starting out with C+
 
 Book: "https://www.pearson.com/en-gb/subject-catalog/p/starting-out-with-c-from-control-structures-through-objects-global-edition/P200000004255/9781292222332"
 
-Each chapter's code file is found in their respetive branches (e.g. CH3.cpp is in branch Chapter_3_Challenges).
+Each chapter's code file is found in their respective branches (e.g. CH3.cpp is in branch Chapter_3_Challenges).
