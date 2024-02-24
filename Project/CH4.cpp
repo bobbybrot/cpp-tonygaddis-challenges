@@ -358,9 +358,108 @@ void Nine_Dollar_Game(void)
 	//How many to make dollar???
 	//100 penies = 0.01
 	//20 nickels = 0.05
-	//10 dimes   = 0.01
+	//10 dimes   = 0.1
 	//4 quarters = 0.25
+	int pennies = 0;
+	int nickels = 0;
+	int dimes = 0;
+	int quarter = 0;
+	float result = 0;
 
+	cout << "\nPennies: ";
+	cin >> nickels;
+	cout << "\nNickels: ";
+	cin >> nickels;
+	cout << "\nDimes: ";
+	cin >> dimes;
+	cout << "\nQuarter: ";
+	cin >> quarter;
+
+	result = (pennies * 0.01f) + (nickels * 0.05f) + (dimes * 0.1f) + (quarter * 0.25f);
+
+	if (result == 1)
+	{
+		cout << "\nCongratulations for winning!!!\n";
+	}
+	else
+	{
+		if (result > 1)
+		{
+			cout << "\nResult was more than...\n";
+		}
+		else
+		{
+			cout << "\nResult was less than...\n";
+		}
+	}
+}
+
+void Ten_Days_In_Month(void)
+{
+	int month = 0;
+	int year = 0;
+	bool leapyear = false;
+	while (1)
+	{
+		//Vet user input and only continue forward if accepted...
+		cout << "Enter a month (1 - 12): ";
+		cin >> month;
+		if (month < 1 || month > 12)
+		{
+			cout << "\n";
+			continue;
+		}
+		else
+		{
+			break;
+		}
+	}
+	cout << "\nEnter a year: ";
+	cin >> year;
+
+	//Calculate and determine leap year based on algorithm provided by book.
+	if ( ((year % 100) == 0) && ((year % 400) == 0) )
+	{
+		leapyear = true;
+	}
+	else if ((year % 4) == 0)
+	{
+		leapyear = true;
+	}
+	else
+	{
+		//No action
+		;
+	}
+
+	switch (month)
+	{
+		case 2:
+			cout << "\n" << ((leapyear) ? "29" : "28");
+			break;
+
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			cout << "\n31 days";
+			break;
+
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			cout << "\n30 days";
+			break;
+
+		default:
+			//Not possible to reach here due to validation checks done in while loop.
+			cout << "ERROR";
+			break;
+	}
 }
 
 int main() 
@@ -373,6 +472,9 @@ int main()
 	//Six_Mass_Weight();
 	//Seven_Time_Calculator();
 	//Eight_Colour_Mixer();
+	//Nine_Dollar_Game();
+	//Ten_Days_In_Month();
+
 
 	return 0;
 }
