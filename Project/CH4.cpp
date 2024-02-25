@@ -12,6 +12,7 @@
 
 #include<iostream>
 #include<string>
+#include<iomanip>
 using namespace std;
 
 int Helper_Int_Is_Larger(int valone, int valtwo)
@@ -462,6 +463,183 @@ void Ten_Days_In_Month(void)
 	}
 }
 
+void Eleven_Math_Tutor(void)
+{
+	const int MAX_RANGE = 1000, MIN_RANGE = 1;
+	int random_one, random_two, total;
+	int userinput;
+	//Random generation seed setup
+	unsigned int seed = (unsigned int)time(0);
+	srand(seed);
+
+	random_one = (rand() % (MAX_RANGE - MIN_RANGE + 1)) + MIN_RANGE;
+	random_two = (rand() % (MAX_RANGE - MIN_RANGE + 1)) + MIN_RANGE;
+	total = random_one + random_two;
+
+	cout << " " << random_one << endl;
+	cout << "+" << random_two << endl;
+	cout << "-----";
+	//cin.ignore(); //Wait for user input
+
+	cout << "\nAnswer: ";
+	cin >> userinput;
+	if (userinput == total)
+	{
+		cout << "\nCongratulations";
+	}
+	else
+	{
+		cout << "\nAnswer was: " << total;
+	}
+	cout << endl;
+}
+
+void Twelve_Software_Sales(void)
+{
+	const int PACKAGE_COST = 99; //$99
+	int units_sold;
+	float discount;
+	float totalcost;
+	
+	while (1)
+	{
+		cout << "Enter units sold: ";
+		cin >> units_sold;
+		//Validation Input
+		if (units_sold > 0)
+		{
+			break;
+		}
+		cout << "\n";
+	}
+
+	totalcost = (float)units_sold * PACKAGE_COST;
+	
+	if ( (units_sold >= 10) && (units_sold <= 19))
+	{
+		discount = 0.2f;
+	}
+	else if ((units_sold >= 20) && (units_sold <= 49))
+	{
+		discount = 0.3f;
+	}
+	else if ((units_sold >= 50) && (units_sold <= 99))
+	{
+		discount = 0.4f;
+	}
+	else if ((units_sold >= 100))
+	{
+		discount = 0.5f;
+	}
+	else
+	{
+		discount = 0;
+	}
+
+	if (discount != 0)
+	{
+		totalcost -= (totalcost * discount);
+	}
+
+	cout << "\nTotal cost: " << totalcost;
+}
+
+void Thirteen_Book_Club_Points(void)
+{
+	int book_purchased;
+
+	cout << "Enter number of books purchased: ";
+	cin >> book_purchased;
+
+	cout << endl;
+	if (book_purchased == 0)
+	{
+		cout << "0 ";
+	}
+	else if (book_purchased == 1)
+	{
+		cout << "5 ";
+	}
+	else if (book_purchased == 2)
+	{
+		cout << "15 ";
+	}
+	else if (book_purchased == 3)
+	{
+		cout << "30 ";
+	}
+	else if (book_purchased >= 4)
+	{
+		cout << "60 ";
+	}
+	cout << "points" << endl;
+}
+
+void Fourteen_Bank_Charges (void)
+{
+	//$10 per month +
+	//.10 if < 20 checks
+	//.08 if 20-39
+	//.06 for 40 - 59 checks
+	//.04 for 60 or more
+	//EXTRA charge if account $400 below.
+	float start_balance;
+	float checks;
+	float charge = 0;
+
+	cout << "Enter Balance: ";
+	cin >> start_balance;
+
+	if (start_balance < 0)
+	{
+		cout << "URGENT: ACCOUNT OVERDRAWN" << endl;
+	}
+	else
+	{
+		while (1)
+		{
+			cout << "\nEnter number of checks: ";
+			cin >> checks;
+			if (checks >= 0)
+			{
+				break;
+			}
+			cout << endl;
+		}
+
+		cout << endl;
+
+		//Set decimal position to reflect dollar output (2 decimal places).
+		cout << fixed << setprecision(2);
+
+		//Calculate bank charge based on quantity of checks
+		if (checks < 20)
+		{
+			charge = checks * 0.10f;
+		}
+		else if ((checks >= 20) && (checks <= 39))
+		{
+			charge = checks * 0.08f;
+		}
+		else if ((checks >= 40) && (checks <= 59))
+		{
+			charge = checks * 0.06f;
+		}
+		else if (checks >= 60)
+		{
+			charge = checks * 0.04f;
+		}
+
+		//Check if extra charge applies if balance less than $400
+		if (start_balance < 400)
+		{
+			charge += 15.00f;
+		}
+
+		cout << "Bank Service Fee: $" << charge << endl;
+	}
+}
+
 int main() 
 {
 	//One_Minimum_Maximum();
@@ -474,7 +652,10 @@ int main()
 	//Eight_Colour_Mixer();
 	//Nine_Dollar_Game();
 	//Ten_Days_In_Month();
-
+	//Eleven_Math_Tutor();
+	//Twelve_Software_Sales();
+	//Thirteen_Book_Club_Points();
+	//Fourteen_Bank_Charges();
 
 	return 0;
 }
