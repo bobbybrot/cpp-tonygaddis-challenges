@@ -640,6 +640,58 @@ void Fourteen_Bank_Charges (void)
 	}
 }
 
+void Fifteen_Shipping_Charges(void)
+{
+	//This program assumes weight and distance to be whole values, not decimal values
+	int weight;
+	int distance;
+	float rate = 0;
+	const int RATE_PER_MILES = 500;
+
+	//Vet weight based on book requirements
+	while (1)
+	{
+		const int MIN = 0;
+		const int MAX = 20;
+		cout << "Enter whole weight (kg, no decimal): ";
+		cin >> weight;
+
+		if ((weight <= MIN) || (weight > MAX))
+		{
+			//Not acceptable range, repeat while loop
+			continue;
+		}
+		else
+		{
+			//Acceptable input, continue
+			break;
+		}
+		cout << endl;
+	}
+
+	//Vet distance based on book requirements
+	while (1)
+	{
+		const int MIN = 10;
+		const int MAX = 3000;
+		cout << "Enter distance: ";
+		cin >> distance;
+
+		if ((distance < MIN) || (distance > MAX))
+		{
+			continue;
+		}
+		else
+		{
+			break;
+		}
+		cout << endl;
+	}
+
+	
+	
+}
+
 int main() 
 {
 	//One_Minimum_Maximum();
