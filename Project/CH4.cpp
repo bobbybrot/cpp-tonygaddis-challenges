@@ -1,3 +1,4 @@
+#include "CH4.h"
 /*
 * Chapter 4: Making Decisions
 * Book Pages: 151 - 231
@@ -642,11 +643,13 @@ void Fourteen_Bank_Charges (void)
 
 void Fifteen_Shipping_Charges(void)
 {
+	const float RATE_PER_MILES = 500;
+
 	//This program assumes weight and distance to be whole values, not decimal values
 	int weight;
 	int distance;
-	float rate = 0;
-	const int RATE_PER_MILES = 500;
+	float distance_chargerate = 0;
+	float weight_chargerate = 0;
 
 	//Vet weight based on book requirements
 	while (1)
@@ -688,26 +691,56 @@ void Fifteen_Shipping_Charges(void)
 		cout << endl;
 	}
 
-	
-	
+	//Calculate base rate for weight given per 500 miles
+	if (weight <= 2)
+	{
+		distance_chargerate = (float)1.10;
+	}
+	else if ((weight > 2) && (weight <= 6))
+	{
+		distance_chargerate = (float)2.20;
+	}
+	else if ((weight > 6) && (weight <= 10))
+	{
+		distance_chargerate = (float)3.70;
+	}
+	else if ((weight > 10) && (weight <= 20))
+	{
+		distance_chargerate = (float)4.80;
+	}
+
+	//Identify how many times base rate must increase if distance more than 500 miles.
+	if (distance <= 500)
+	{
+		weight_chargerate = 1;
+	}
+	else
+	{
+		weight_chargerate = (distance / RATE_PER_MILES);
+	}
+
+	cout << setprecision(2) << fixed;
+	cout << "Charges: $" << (distance_chargerate * weight_chargerate) << endl;
 }
 
-int main() 
+void Helper_Vet_Input()
 {
-	//One_Minimum_Maximum();
-	//Two_Roman_Numerical_Converter();
-	//Three_Magic_Dates();
-	//Four_Area_Of_Rectangles();
-	//Five_Body_Max_Index();
-	//Six_Mass_Weight();
-	//Seven_Time_Calculator();
-	//Eight_Colour_Mixer();
-	//Nine_Dollar_Game();
-	//Ten_Days_In_Month();
-	//Eleven_Math_Tutor();
-	//Twelve_Software_Sales();
-	//Thirteen_Book_Club_Points();
-	//Fourteen_Bank_Charges();
+	while (1)
+	{
 
-	return 0;
+	}
+}
+void Sixteen_Running_Race(void)
+{
+	string runner_one;
+	float time_s;
+	string runner_two;
+	string runner_three;
+	cout << "Enter name of first runner: ";
+	cin >> runner_one;
+
+	cout << "Enter name of second runner: ";
+	cin >> runner_two;
+	cout << "Enter name of third runner: ";
+	cin >> runner_three;
 }

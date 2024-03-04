@@ -533,36 +533,3 @@ void Twentyfive_Word_Game(void)
 		<< ".  Then, " << name << " adopted a(n) " << animal_type << " named " << pet_name << ".  They both lived\nhappily"
 		" ever after!";
 }
-
-/****************** MAIN ******************/
-int main()
-{
-	//One_Miles_Per_Gallon();
-	//Two_Stadium_Seating();
-	//Three_Test_Average();
-	//Four_Average_Rainfall();
-	//Five_Male_Female_Percentages();
-	//Six_Ingredient_Adjuster();
-	//Seven_Box_Office();
-	//Eight_How_Many_Widgets();
-	//Nine_How_Many_Calories();
-	//Ten_Insurance();
-	//Eleven_Automobile_Costs();
-	//Twelve_Celsius_To_Fahrenheit();
-	//Thirteen_Currency();
-	//Fourteen_Monthly_Sales_Tax();
-	//Fifteen_Property_Tax();
-	//Sixteen_Senior_Tax();
-	//Seventeen_Math_Tutor();
-	//Eighteen_Interest_Earned();
-	//Ninteen_Monthly_Payments();
-	//Twenty_Pizza_Pi();
-	//Twentyone_How_Many_Pizzas();
-	//Twentytwo_Angle_Calculator();
-	//Twentythree_Stock_Transaction();
-	//Twentyfour_Planting_Grapevine();
-	//Twentyfive_Word_Game();
-	//END OF CHALLENGES FOR CHAPTER 3
-
-	return 0;
-}
