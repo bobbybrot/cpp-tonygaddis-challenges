@@ -1,4 +1,3 @@
-#include "CH4.h"
 /*
 * Chapter 4: Making Decisions
 * Book Pages: 151 - 231
@@ -16,7 +15,7 @@
 #include<iomanip>
 using namespace std;
 
-int Helper_Int_Is_Larger(int valone, int valtwo)
+static int Helper_Int_Is_Larger(int valone, int valtwo)
 {
 	int ret;
 	if (valone > valtwo)
@@ -37,7 +36,7 @@ int Helper_Int_Is_Larger(int valone, int valtwo)
 //Miscellaneous function to test string comparison.
 //Multiple conflicts was found with the checkpoint answers provided by C++ book, regarding string comparisons, thus
 //created function below to manually verify answers.
-void Misc_Str_Compare(void)
+static void Misc_Str_Compare(void)
 {
 	int reloop = 0;
 
@@ -84,7 +83,7 @@ void Misc_Str_Compare(void)
 	}
 }
 
-void One_Minimum_Maximum(void)
+static void One_Minimum_Maximum(void)
 {
 	int ione, itwo;
 
@@ -94,7 +93,7 @@ void One_Minimum_Maximum(void)
 	cout << "Input " << Helper_Int_Is_Larger(ione,itwo) << " is largest";
 }
 
-void Two_Roman_Numerical_Converter(void)
+static void Two_Roman_Numerical_Converter(void)
 {
 	int ione;
 	cout << "Please enter number between one and ten ";
@@ -119,7 +118,7 @@ void Two_Roman_Numerical_Converter(void)
 	cout << endl;
 }
 
-void Three_Magic_Dates(void)
+static void Three_Magic_Dates(void)
 {
 	int date, month, year, calc;
 	cout << "Enter Date: ";
@@ -143,7 +142,7 @@ void Three_Magic_Dates(void)
 	}
 }
 
-void Four_Area_Of_Rectangles(void)
+static void Four_Area_Of_Rectangles(void)
 {
 	//area = length * width
 	int areaone, length, width, areatwo;
@@ -174,7 +173,7 @@ void Four_Area_Of_Rectangles(void)
 	}
 }
 
-int Five_Underweight_Overweight(double bmi)
+static int Five_Underweight_Overweight(double bmi)
 {
 	const float UNDERWEIGHT = 18.5;
 	const float OVERWEIGHT = 25.0;
@@ -204,7 +203,7 @@ int Five_Underweight_Overweight(double bmi)
 	return result;
 }
 
-void Five_Body_Max_Index(void)
+static void Five_Body_Max_Index(void)
 {
 	float weight;
 	float height;
@@ -219,7 +218,7 @@ void Five_Body_Max_Index(void)
 	(void)Five_Underweight_Overweight(bmi);
 }
 
-int Six_Heavy_Little(float weight)
+static int Six_Heavy_Little(float weight)
 {
 	const float TOO_HEAVY = 1000;
 	const float TOO_LITTLE = 10;
@@ -248,7 +247,7 @@ int Six_Heavy_Little(float weight)
 	return result;
 }
 
-void Six_Mass_Weight(void)
+static void Six_Mass_Weight(void)
 {
 	float mass;
 	float weight;
@@ -262,7 +261,7 @@ void Six_Mass_Weight(void)
 	(void)Six_Heavy_Little(weight);
 }
 
-int Seven_Min_Hours_Days(int seconds)
+static int Seven_Min_Hours_Days(int seconds)
 {
 	const int MINUTE = 60;
 	const int HOUR   = 3600;
@@ -297,7 +296,7 @@ int Seven_Min_Hours_Days(int seconds)
 	return result;
 }
 
-void Seven_Time_Calculator(void)
+static void Seven_Time_Calculator(void)
 {
 	int seconds;
 	cout << "Enter seconds: ";
@@ -307,7 +306,7 @@ void Seven_Time_Calculator(void)
 	(void)Seven_Min_Hours_Days(seconds);
 }
 
-void Eight_Colour_Mixer(void)
+static void Eight_Colour_Mixer(void)
 {
 	string iOne;
 	string iTwo;
@@ -355,7 +354,7 @@ void Eight_Colour_Mixer(void)
 	}
 }
 
-void Nine_Dollar_Game(void)
+static void Nine_Dollar_Game(void)
 {
 	//How many to make dollar???
 	//100 penies = 0.01
@@ -396,7 +395,7 @@ void Nine_Dollar_Game(void)
 	}
 }
 
-void Ten_Days_In_Month(void)
+static void Ten_Days_In_Month(void)
 {
 	int month = 0;
 	int year = 0;
@@ -464,7 +463,7 @@ void Ten_Days_In_Month(void)
 	}
 }
 
-void Eleven_Math_Tutor(void)
+static void Eleven_Math_Tutor(void)
 {
 	const int MAX_RANGE = 1000, MIN_RANGE = 1;
 	int random_one, random_two, total;
@@ -495,7 +494,7 @@ void Eleven_Math_Tutor(void)
 	cout << endl;
 }
 
-void Twelve_Software_Sales(void)
+static void Twelve_Software_Sales(void)
 {
 	const int PACKAGE_COST = 99; //$99
 	int units_sold;
@@ -545,7 +544,7 @@ void Twelve_Software_Sales(void)
 	cout << "\nTotal cost: " << totalcost;
 }
 
-void Thirteen_Book_Club_Points(void)
+static void Thirteen_Book_Club_Points(void)
 {
 	int book_purchased;
 
@@ -576,7 +575,7 @@ void Thirteen_Book_Club_Points(void)
 	cout << "points" << endl;
 }
 
-void Fourteen_Bank_Charges (void)
+static void Fourteen_Bank_Charges (void)
 {
 	//$10 per month +
 	//.10 if < 20 checks
@@ -641,7 +640,7 @@ void Fourteen_Bank_Charges (void)
 	}
 }
 
-void Fifteen_Shipping_Charges(void)
+static void Fifteen_Shipping_Charges(void)
 {
 	const float RATE_PER_MILES = 500;
 
@@ -723,24 +722,40 @@ void Fifteen_Shipping_Charges(void)
 	cout << "Charges: $" << (distance_chargerate * weight_chargerate) << endl;
 }
 
-void Helper_Vet_Input()
+static int Helper_Vet_Input()
 {
+	int time_s;
 	while (1)
 	{
-
+		cout << "Enter time in seconds: ";
+		cin >> time_s;
+		if (time_s >= 0)
+		{
+			return time_s;
+		}
+		cout << endl;
 	}
 }
-void Sixteen_Running_Race(void)
+static void Sixteen_Running_Race(void)
 {
 	string runner_one;
-	float time_s;
+	int time_one_s;
+	int time_two_s;
+	int time_three_s;
 	string runner_two;
 	string runner_three;
 	cout << "Enter name of first runner: ";
 	cin >> runner_one;
+	time_one_s = Helper_Vet_Input();
 
 	cout << "Enter name of second runner: ";
 	cin >> runner_two;
+	time_two_s = Helper_Vet_Input();
+
 	cout << "Enter name of third runner: ";
 	cin >> runner_three;
+	time_three_s = Helper_Vet_Input();
+
+	//Now check the condition of the service al
+
 }

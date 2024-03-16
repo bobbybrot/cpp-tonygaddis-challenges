@@ -1,5 +1,5 @@
-//#include "CH3.h"
-#include "CH4.h"
+#include "CH3.cpp"
+#include "CH4.cpp"
 
 int main()
 {

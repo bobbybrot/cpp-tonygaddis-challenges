@@ -19,7 +19,7 @@
 using namespace std;
 
 /****************** FUNCTION DEFINITIONS ******************/
-void One_Miles_Per_Gallon(void)
+static void One_Miles_Per_Gallon(void)
 {
 	float max_gallons_supported, max_miles_full_tank;
 
@@ -36,7 +36,7 @@ void One_Miles_Per_Gallon(void)
 	cout << "MPG: " << (max_miles_full_tank / max_gallons_supported) << "MPG" << endl;
 }
 
-void Two_Stadium_Seating(void)
+static void Two_Stadium_Seating(void)
 {
 	//Ask for Class A,B,C how many seats sold.
 	float seats_sold_a, seats_sold_b, seats_sold_c, total_sales_income;
@@ -55,7 +55,7 @@ void Two_Stadium_Seating(void)
 	cout << "Total Income: $" << total_sales_income << endl;
 }
 
-void Three_Test_Average(void)
+static void Three_Test_Average(void)
 {
 	float test_one, test_two, test_three, test_four, test_five, test_avg;
 	const float NUMBER_OF_VALUES = 5.0;
@@ -74,7 +74,7 @@ void Three_Test_Average(void)
 	cout << "Average: " << test_avg << endl;	
 }
 
-void Four_Average_Rainfall(void)
+static void Four_Average_Rainfall(void)
 {
 	//:Calculate average rainfall for three months.
 	string month_one, month_two, month_three;
@@ -93,7 +93,7 @@ void Four_Average_Rainfall(void)
 		 << rainfall_average << " inches" << endl;
 }
 
-void Five_Male_Female_Percentages(void)
+static void Five_Male_Female_Percentages(void)
 {
 	//Calculate percentage of male and female attendance in a class
 	const float PERCENTAGE_WHOLE_NUMBER_CONV = 100;
@@ -114,7 +114,7 @@ void Five_Male_Female_Percentages(void)
 
 }
 
-void Six_Ingredient_Adjuster(void)
+static void Six_Ingredient_Adjuster(void)
 {
 	//With given ingredient data, ask user how many cookies they wish to make and calculate ingredients needed
 	
@@ -140,7 +140,7 @@ void Six_Ingredient_Adjuster(void)
 	cout << "Flour Cups: " << CUPS_FLOUR_ONE * cookies_to_make << endl;
 }
 
-void Seven_Box_Office(void)
+static void Seven_Box_Office(void)
 {
 	const float ADULT_TICKET_PRICE = 10.00f, CHILD_TICKET_PRICE = 6.00f, THEATER_PROFIT_FROM_GROSS = 0.20f;
 	string name_of_movie;
@@ -169,7 +169,7 @@ void Seven_Box_Office(void)
 	cout << "Amount Paid to Distributor: " << setw(11) << "$ " << setw(7) << (gross_box_office - net_box_office) << endl;
 }
 
-void Eight_How_Many_Widgets(void)
+static void Eight_How_Many_Widgets(void)
 {
 	const float YOKON_WIDGET_WEIGH = 12.5f;
 	float pallet_weight_solo, pallet_weight_with_widgets;
@@ -186,7 +186,7 @@ void Eight_How_Many_Widgets(void)
 
 }
 
-void Nine_How_Many_Calories(void)
+static void Nine_How_Many_Calories(void)
 {
 	//300cal = 10 cookies.  One cookie should be 30cal, hence below constant.
 	const int CALORIES_PER_COOKIE = 30;
@@ -198,7 +198,7 @@ void Nine_How_Many_Calories(void)
 	cout << "Calorie consumption: " << (cookies_consumed * CALORIES_PER_COOKIE) << "cal " << endl;
 }
 
-void Ten_Insurance(void)
+static void Ten_Insurance(void)
 {
 	const float RECOMMENDED_INSURANCE_PERCENTAGE = 0.80f;
 	float replacement_cost;
@@ -209,7 +209,7 @@ void Ten_Insurance(void)
 	cout << "Insurance minimum recommended: $" << replacement_cost * RECOMMENDED_INSURANCE_PERCENTAGE << endl;
 }
 
-void Eleven_Automobile_Costs(void)
+static void Eleven_Automobile_Costs(void)
 {
 	const float MONTHS_IN_YEARS = 12;
 	float loan, insurance, gas, oil, tires, maintenance, grand_monthly_total;
@@ -228,7 +228,7 @@ void Eleven_Automobile_Costs(void)
 	cout << "Yearly cost: $" << (grand_monthly_total * 12) << endl;
 }
 
-void Twelve_Celsius_To_Fahrenheit(void)
+static void Twelve_Celsius_To_Fahrenheit(void)
 {
 	float celcius, fahrenheit;
 	
@@ -243,7 +243,7 @@ void Twelve_Celsius_To_Fahrenheit(void)
 
 }
 
-void Thirteen_Currency(void)
+static void Thirteen_Currency(void)
 {
 	const float YEN_PER_DOLLAR = 146.20f;
 	const float EUROS_PER_DOLLAR = 0.92f;
@@ -253,7 +253,7 @@ void Thirteen_Currency(void)
 	cout << "USD to EURO = " << EUROS_PER_DOLLAR;
 }
 
-void Fourteen_Monthly_Sales_Tax(void)
+static void Fourteen_Monthly_Sales_Tax(void)
 {
 	const float TOTAL_TAX = 0.06f, STATE_TAX = .04f, COUNTY_TAX = .02f;
 	string month;
@@ -282,7 +282,7 @@ void Fourteen_Monthly_Sales_Tax(void)
 	cout << "Total Sales Tax:  " << setw(10) << "$" << setw(9) << total_tax << endl;
 }
 
-void Fifteen_Property_Tax(void)
+static void Fifteen_Property_Tax(void)
 {
 	const float PROPERTY_TAX_OF_ASSESSMENT = 0.75f;
 	const float ASSESSMENT_VALUE_OF_LAND_VALUE = 0.60f;
@@ -300,7 +300,7 @@ void Fifteen_Property_Tax(void)
 
 }
 
-void Sixteen_Senior_Tax(void)
+static void Sixteen_Senior_Tax(void)
 {
 	const float ASSESSMENT_VALUE_OF_LAND_VALUE = 0.60f;
 	const float SENIOR_EXCEMPTION = 5000;
@@ -323,7 +323,7 @@ void Sixteen_Senior_Tax(void)
 	cout << "Installment Price = $" << installment_price << endl;
 }
 
-void Seventeen_Math_Tutor(void)
+static void Seventeen_Math_Tutor(void)
 {
 	const int MAX_RANGE = 1000, MIN_RANGE = 1;
 	int random_one, random_two, total;
@@ -344,7 +344,7 @@ void Seventeen_Math_Tutor(void)
 
 }
 
-void Eighteen_Interest_Earned(void)
+static void Eighteen_Interest_Earned(void)
 {
 	float principal, interest, interest_value, amount;
 	int interest_compounded;
@@ -362,7 +362,7 @@ void Eighteen_Interest_Earned(void)
 	cout << "Amount in Savings:  " << setw(3) << "$ " << setw(8) << amount << endl;
 }
 
-void Ninteen_Monthly_Payments(void)
+static void Ninteen_Monthly_Payments(void)
 {
 	float annual_interest;
 	float n, l, rate;  //Variables used for book algorithm
@@ -396,7 +396,7 @@ void Ninteen_Monthly_Payments(void)
 	cout << "Interest Paid:         " << setw(3) << "$ " << setw(8) << interest_paid << endl;
 }
 
-void Twenty_Pizza_Pi(void)
+static void Twenty_Pizza_Pi(void)
 {
 	const float SLICE_AREA = 14.125f;
 	const float PI = 3.14159f;
@@ -417,7 +417,7 @@ void Twenty_Pizza_Pi(void)
 	cout << "Slices: " << slices << endl;
 }
 
-void Twentyone_How_Many_Pizzas(void)
+static void Twentyone_How_Many_Pizzas(void)
 {
 	//This question copies and adapts previous exercise.
 	const float SLICE_AREA = 14.125f;
@@ -446,7 +446,7 @@ void Twentyone_How_Many_Pizzas(void)
 	cout << pizza_to_order << " pizzas required" << endl;
 }
 
-void Twentytwo_Angle_Calculator(void)
+static void Twentytwo_Angle_Calculator(void)
 {
 	double radians;
 
@@ -459,7 +459,7 @@ void Twentytwo_Angle_Calculator(void)
 	cout << "Tan:    " << tan(radians) << endl;
 }
 
-void Twentythree_Stock_Transaction(void)
+static void Twentythree_Stock_Transaction(void)
 {
 	const float JOE_STOCK_BUY = (45.50f * 1000);  //1000 being shares
 	const float BROKER_COMMISSION = 0.02f;
@@ -483,7 +483,7 @@ void Twentythree_Stock_Transaction(void)
 	cout << "Total profit: $" << final_profit;
 }
 
-void Twentyfour_Planting_Grapevine(void)
+static void Twentyfour_Planting_Grapevine(void)
 {
 	float row_feet;
 	float assembly_space;
@@ -502,7 +502,7 @@ void Twentyfour_Planting_Grapevine(void)
 	cout << "Number of vines: " << no_of_vines << endl;
 }
 
-void Twentyfive_Word_Game(void)
+static void Twentyfive_Word_Game(void)
 {
 	string name;
 	int age;
