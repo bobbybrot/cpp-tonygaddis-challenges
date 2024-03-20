@@ -724,26 +724,43 @@ static void Fifteen_Shipping_Charges(void)
 
 static int Helper_Vet_Input()
 {
-	int time_s;
+	//Despite the above, I also catered to character inputs which causes an infinite loop bug.
+	int time_s = -1;
 	while (1)
 	{
-		cout << "Enter time in seconds: ";
+		cout << "Enter time in seconds (decimal format): "; 
 		cin >> time_s;
-		if (time_s >= 0)
+		
+		if (!cin.fail())
 		{
-			return time_s;
+			//Book requirement: Only accept positive numbers...
+			if (time_s >= 0)
+			{
+				break;
+			}
+		}
+		else
+		{
+			//Someone attempted to add character, causing cin to fail and not allow another input.
+			//From online research, clear the warning then ignore keyboard buffer until user \n is found.
+			//Loop will then iterate and a retry will be performed.
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
 		cout << endl;
 	}
+	return time_s;
 }
+
 static void Sixteen_Running_Race(void)
 {
 	string runner_one;
 	int time_one_s;
-	int time_two_s;
-	int time_three_s;
 	string runner_two;
+	int time_two_s;
 	string runner_three;
+	int time_three_s;
+
 	cout << "Enter name of first runner: ";
 	cin >> runner_one;
 	time_one_s = Helper_Vet_Input();
@@ -756,6 +773,187 @@ static void Sixteen_Running_Race(void)
 	cin >> runner_three;
 	time_three_s = Helper_Vet_Input();
 
-	//Now check the condition of the service al
+	cout << endl << "Shortest runner was: ";
+	if ((time_one_s < time_two_s) || (time_one_s < time_three_s))
+	{
+		cout << runner_one;
+	}
+	else if (time_two_s < time_three_s)
+	{
+		cout << runner_two;
+	}
+	else //time_three_s < time_two_s
+	{
+		cout << runner_three;
+	}
+	cout << endl;
+} 
 
+static float Helper_Vet_Height(void)
+{
+	float height = -1;
+	while (1)
+	{
+		cout << "Enter height (m) = ";
+		cin >> height;
+
+		if (!cin.fail())
+		{
+			const float MIN_VAL = 2.0;
+			const float MAX_VAL = 5.0;
+
+			//Book requirement:  Between 2.0 and 5.0.
+			if ((height >= MIN_VAL) && (height <= MAX_VAL))
+			{
+				break;
+			}
+		}
+		else
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(),'\n');
+		}
+		cout << endl;
+	}
+	return height;
+}
+
+static void Helper_Print_Vault(string date, float height)
+{
+	cout << "Date: " << date << " Height: " << height << endl;
+}
+static void Seventeen_Personal_Best(void)
+{
+	string pole_volter_name;
+	string date_one;
+	float vault_height_one;
+	string date_two;
+	float vault_height_two;
+	string date_three;
+	float vault_height_three;
+
+	cout << "Enter volter name: ";
+	cin >> pole_volter_name;
+
+	cout << "Enter Date One of vault (DD/MM/YY): ";
+	cin >> date_one;
+	vault_height_one = Helper_Vet_Height();
+
+	cout << "Enter Date two of vault (DD/MM/YY): ";
+	cin >> date_two;
+	vault_height_two = Helper_Vet_Height();
+
+	cout << "Enter Date three of vault (DD/MM/YY): ";
+	cin >> date_three;
+	vault_height_three = Helper_Vet_Height();
+
+	//Report in order of height (best first), date each vault made and it's height.
+	cout << endl;
+	if ((vault_height_one > vault_height_two) && (vault_height_one > vault_height_three))
+	{
+		Helper_Print_Vault(date_one, vault_height_one);
+
+		if (vault_height_two > vault_height_three) //TESTED
+		{
+			Helper_Print_Vault(date_two, vault_height_two);
+			Helper_Print_Vault(date_three, vault_height_three);
+		}
+		else //vault_height_three > vault_height_two  //TESTED
+		{
+			Helper_Print_Vault(date_three, vault_height_three);
+			Helper_Print_Vault(date_two, vault_height_two);
+		}
+	}
+	else if ((vault_height_two > vault_height_one) && (vault_height_two > vault_height_three))
+	{
+		Helper_Print_Vault(date_two, vault_height_two);
+
+		if (vault_height_one > vault_height_three) //TESTED
+		{
+			Helper_Print_Vault(date_one, vault_height_one);
+			Helper_Print_Vault(date_three, vault_height_three);
+		}
+		else //vault_height_three > vault_height_one  //TESTED
+		{
+			Helper_Print_Vault(date_three, vault_height_three);
+			Helper_Print_Vault(date_one, vault_height_one);
+		}
+	}
+	else if ((vault_height_three > vault_height_one) && (vault_height_three > vault_height_two))
+	{
+		Helper_Print_Vault(date_three, vault_height_three);
+
+		if (vault_height_one > vault_height_two) //TESTED
+		{
+			Helper_Print_Vault(date_one, vault_height_one);
+			Helper_Print_Vault(date_two, vault_height_two);
+		}
+		else //vault_height_two > vault_height_one
+		{
+			Helper_Print_Vault(date_two, vault_height_two);
+			Helper_Print_Vault(date_one, vault_height_one);
+		}
+	}
+	else
+	{
+		//Should not get here...
+		;
+	}
+	cout << endl;
+}
+
+static float Helper_Calories_Fat_Input(void)
+{
+	float input;
+	while (1)
+	{
+		cin >> input;
+
+		if (!cin.fail())
+		{
+			if (input >= 0.0)
+			{
+				break;
+			}
+			else
+			{
+				cout << "INCORRECT - Please Reenter: ";
+			}
+		}
+		else
+		{
+			//Clear warning and repeat input process
+			cin.clear();
+			cin.ignore();
+		}
+	}
+	cout << endl;
+	return input;
+}
+
+static void Eighteen_Fat_Gram_Calculator(void)
+{
+	float calories_total;
+	float fat_gram;
+	float calories;
+
+	const float CALORIES_PER_GRAM = 9.0;
+	cout << "Enter Total Calories: ";
+	calories_total = Helper_Calories_Fat_Input();
+	cout << "Enter Fat (grams): ";
+	fat_gram = Helper_Calories_Fat_Input();
+
+	//Calculate calories from given fat grams
+	calories = CALORIES_PER_GRAM * fat_gram;
+
+	//Book requirement indicates total calories can't be larger than given calories
+	if (calories > calories_total)
+	{
+		cout << "Either Calories or fat gram were incorrectly entered." << endl;
+	}
+	else
+	{
+		cout << "Percentage of Calories from fat: " << ((calories / calories_total) * 100)
+			<< "%" << endl;
+	}
 }

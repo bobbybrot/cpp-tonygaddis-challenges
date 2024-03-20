@@ -45,6 +45,9 @@ int main()
 	//Thirteen_Book_Club_Points();
 	//Fourteen_Bank_Charges();
 	//Fifteen_Shipping_Charges();
+	//Sixteen_Running_Race();
+	//Seventeen_Personal_Best();
+	//Eighteen_Fat_Gram_Calculator();
 	//END OF CHALLENGES FOR CHAPTER 4
 
 	return 0;
