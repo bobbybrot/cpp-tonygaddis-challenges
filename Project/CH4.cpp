@@ -957,3 +957,156 @@ static void Eighteen_Fat_Gram_Calculator(void)
 			<< "%" << endl;
 	}
 }
+
+//Helper function to calculate what precision of decimal places to display on screen.
+static int Helper_Calculate_Setprecision(double input)
+{
+	int counter = 0;
+	while (input < 1.0)
+	{
+		input = input * 10;
+		counter++;
+	}
+	return counter;
+}
+
+static void Helper_Nineteen_Output(double decimal_value, char* debug_test)
+{
+	const double RADIOWAVES = 1E-2;
+	const double MICROWAVES = 1E-3;
+	const double INFRARED = 7E-7;
+	const double VISIBLELIGHT = 4E-7;
+	const double ULTRAVIOLET = 1E-8;
+	const double XRAYS = 1E-11;
+
+	if (decimal_value >= RADIOWAVES)
+	{
+		cout << "Radio Waves.";
+		if (debug_test != NULL)
+		{
+			sprintf_s(debug_test, 14, "RADIOWAVES");
+		}
+	}
+	else if (decimal_value >= MICROWAVES)
+	{
+		cout << "Micro Waves.";
+		if (debug_test != NULL)
+		{
+			sprintf_s(debug_test, 14, "MICROWAVES");
+		}
+	}
+	else if (decimal_value >= INFRARED)
+	{
+		cout << "Infrared.";
+		if (debug_test != NULL)
+		{
+			sprintf_s(debug_test, 14, "INFRARED");
+		}
+	}
+	else if (decimal_value >= VISIBLELIGHT)
+	{
+		cout << "Visible Light.";
+		if (debug_test != NULL)
+		{
+			sprintf_s(debug_test, 14, "VISIBLELIGHT");
+		}
+	}
+	else if (decimal_value >= ULTRAVIOLET)
+	{
+		cout << "Ultraviolet.";
+		if (debug_test != NULL)
+		{
+			sprintf_s(debug_test, 14, "ULTRAVIOLET");
+		}
+	}
+	else if (decimal_value >= XRAYS)
+	{
+		cout << "Xrays.";
+		if (debug_test != NULL)
+		{
+			sprintf_s(debug_test, 14, "XRAYS");
+		}
+	}
+	else
+	{
+		cout << "Gamma Rays";
+		if (debug_test != NULL)
+		{
+			sprintf_s(debug_test, 14, "GAMMARAYS");
+		}
+	}
+}
+
+static void Nineteen_Spectral_Analysis(void)
+{
+	//Book indicates user will input scientific notation.  Hence read as raw characters and process accordingly.
+	//We assume user will always give a number, followed by E (scientific notation for 10) then number to power by.
+	//It would be easier to process by splitting base and exponent, but worth a challenge to get whole scientific representation,
+	//break it down and then perform spectral analysis.
+	//i.e. User input: 4E-7
+	char input[12] = { 0 }; //0-11 index.  12 is arbritary number.
+	double decimal_value;
+	double base;
+	double exponent_pow;
+	bool is_base = true;
+	bool is_minus = false;
+	
+	cout << "Enter wavelength in meters (i.e. 1E-7): ";
+	cin.getline(input, 12);
+	
+	for (int i = 0; input[i] != '\0'; i++)
+	{
+		if ((input[i] == '\n'))
+		{
+			continue;
+		}
+	
+		if ((input[i] == 'e') || (input[i] == 'E'))
+		{
+			is_base = false;
+			continue;
+		}
+		else if (is_base) //Base data
+		{
+			static bool first_pass = false;
+			if (!first_pass)
+			{
+				base = (int)(input[i] - '0');
+				first_pass = true;
+			}
+			else
+			{
+				base = (base * 10) + ((int)(input[i] - '0'));
+			}
+		}
+		else //Exponent data
+		{
+			static bool first_pass = false;
+			if (input[i] == '-')
+			{
+				is_minus = true;
+				continue;
+			}
+			else if (!first_pass)
+			{
+				exponent_pow = (int)(input[i] - '0');
+				first_pass = true;
+			}
+			else
+			{
+				exponent_pow = ((exponent_pow * 10) + ((double)(input[i] - '0')));
+			}
+		}
+	}
+	//Process exponent to negative value and calculate final exponent value.
+	if (is_minus)
+	{
+		exponent_pow = -exponent_pow;
+	}
+	decimal_value = base * pow(10, exponent_pow);
+	
+	cout << endl << "Wavelength is ";
+	Helper_Nineteen_Output(decimal_value, NULL);
+
+	cout << endl;
+}
