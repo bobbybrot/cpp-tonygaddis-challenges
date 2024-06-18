@@ -48,7 +48,12 @@ int main()
 	//Sixteen_Running_Race();
 	//Seventeen_Personal_Best();
 	//Eighteen_Fat_Gram_Calculator();
-	Nineteen_Spectral_Analysis();
+	//Nineteen_Spectral_Analysis();
+	//Twenty_Speed_Of_Sound();
+	//TwentyOne_Speed_Sound_Grasses();
+	//TwentyTwo_Freezing_Boiling_Points();
+	//TwentyThree_Geometry();
+	TwentyFour_Long_Distance_Calls();
 	//END OF CHALLENGES FOR CHAPTER 4
 
 	return 0;

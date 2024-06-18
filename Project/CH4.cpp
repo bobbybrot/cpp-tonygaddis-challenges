@@ -1110,3 +1110,269 @@ static void Nineteen_Spectral_Analysis(void)
 
 	cout << endl;
 }
+
+static void Twenty_Speed_Of_Sound(void)
+{
+	int menu_choice = 0;
+	float sound_wave_distance = -1;
+	const int AIR = 1;
+	const int WATER = 2;
+	const int STEEL = 3;
+	
+	//Input 0. Retry
+	//Input 4. Retry
+	//Input 1. Ok
+	//Input 3. Ok
+	while ((menu_choice < 1) || (menu_choice > 3))
+	{
+		cout << "Please choose from following options:\n";
+		cout << "1. Air :: 2. Water :: 3. Steel" << endl;
+		cin >> menu_choice;
+		cout << endl;
+	}
+
+	while (sound_wave_distance < 1.0)
+	{
+		cout << "Enter distance the soundwave will take (distance must be x > 0): ";
+		cin >> sound_wave_distance;
+	}
+	
+	if (menu_choice == AIR)
+	{
+		const int SPEED = 1100; //Feet per second
+		cout << "Estimated time: " << fixed << setprecision(4) << (sound_wave_distance / SPEED) << "s";
+	}
+	else if (menu_choice == WATER)
+	{
+		const int SPEED = 4900;
+		cout << "Estimated time: " << fixed << setprecision(4) << (sound_wave_distance / SPEED) << "s";
+	}
+	else if (menu_choice == STEEL)
+	{
+		const int SPEED = 16400;
+		cout << "Estimated time: " << fixed << setprecision(4) << (sound_wave_distance / SPEED) << "s";
+	}
+	else //Invalid option, though not possible to enter due to validation checks previously
+	{
+		cout << "Unexpected menu choice detected..." << endl;
+	}
+}
+
+static void TwentyOne_Speed_Sound_Grasses(void)
+{
+	int menu_choice = 0;
+	int travel_seconds = 0;
+	cout << endl;
+	cout << "Input menu choice:" << endl;
+	cout << "1. Carbon Dioxide :: 2. Air :: 3. Helium :: 4. Hydrogen: ";
+	cin >> menu_choice;
+	
+	if ((menu_choice < 1) || (menu_choice > 4))
+	{
+		cout << "Invalid menu choice, terminating program" << endl;
+		menu_choice = -1;
+	}
+
+	if (menu_choice != -1)
+	{
+		cout << "Enter time for sound to travel to destination (in seconds): ";
+		cin >> travel_seconds;
+		if ((travel_seconds < 0) || (travel_seconds > 30))
+		{
+			cout << "Invalid time input, terminating program" << endl;
+			menu_choice = -1;
+		}
+		else
+		{
+			//Though not a requirement, tidy up output when we calculate and display distance.
+			cout << fixed << setprecision(2);
+		}
+	}
+
+	//Report distance of source.
+	//Distance = time X speed
+	if (menu_choice == 1)
+	{
+		//Carbon Dioxide
+		const float SPEED_MS = 258.0;
+		cout << "Distance of sound source (meters) = " << (travel_seconds * SPEED_MS);
+
+	}
+	else if (menu_choice == 2)
+	{
+		//Air
+		const float SPEED_MS = 331.5;
+		cout << "Distance of sound source (meters) = " << (travel_seconds * SPEED_MS);
+	}
+	else if (menu_choice == 3)
+	{
+		//Helium
+		const float SPEED_MS = 972.0;
+		cout << "Distance of sound source (meters) = " << (travel_seconds * SPEED_MS);
+	}
+	else if (menu_choice == 4)
+	{
+		//Hydrogen
+		const float SPEED_MS = 1270.0;
+		cout << "Distance of sound source (meters) = " << (travel_seconds * SPEED_MS);
+	}
+	else
+	{
+		//Invalid input detected, gracefully allow program to exit
+	}
+}
+
+static void TwentyTwo_Freezing_Boiling_Points(void)
+{
+	//1. Enter temperature at point of freeze
+	//2. Enter temperature at point of boiling
+	//3. Output substances that freeze by given input
+	//4. Output ALL substance that boils by given input.
+	
+	//Freezing values (ferenheit)
+	const int ethyl_alcohol_freeze =	-173;
+	const int mercury_freeze =			-38;
+	const int oxygen_freeze =			-362;
+	const int water_freeze =			32;
+
+	//Boiling values (ferenheit)
+	const int ethyl_alcohol_boil =	172;
+	const int mercury_boil =		676;
+	const int oxygen_boil =			-306;
+	const int water_boil =			212;
+	
+	int temperature;
+	cout << "Enter temperature, I will report what freezes and what boils: \n";
+	cin >> temperature;
+
+	cout << "-------------\n";
+	cout << "Freezing:\n";
+	if (temperature <= ethyl_alcohol_freeze)
+	{
+		cout << "Ethyl alcohol\n";
+	}
+	if (temperature <= mercury_freeze)
+	{
+		cout << "Mercury\n";
+	}
+	if (temperature <= oxygen_freeze)
+	{
+		cout << "Oxygen\n";
+	}
+	if (temperature <= water_freeze)
+	{
+		cout << "Water\n";
+	}
+	cout << "-------------\n";
+
+	cout << "Boiling:\n";
+	if (temperature >= ethyl_alcohol_boil)
+	{
+		cout << "Ethyl alcohol\n";
+	}
+	if (temperature >= mercury_boil)
+	{
+		cout << "Mercury\n";
+	}
+	if (temperature >= oxygen_boil)
+	{
+		cout << "Oxygen\n";
+	}
+	if (temperature >= water_boil)
+	{
+		cout << "Water\n";
+	}
+	cout << "-------------\n";
+}
+
+static void TwentyThree_Geometry(void)
+{
+	//Menu
+		//1. Calculate area of Circle.
+		//2. Calculate area of Rectangle.
+		//3. Calculate Area of a Triangle.
+		//4. Quit
+	int menu;
+	cout << "Enter Menu choice: \n1. Calculate Are of Circle \n2. Calculate Area of Rectangle \n"
+		<< "3. Calculate Area of Triangle \n: ";
+	cin >> menu;
+
+	//Set decimal format.
+	cout << fixed << setprecision(5);
+
+	//If menu == 1
+		//Input: radius of circle
+			// NOT negative !
+		//Output: Display area using (area = PI* (r*r))
+		// PI = 3.14159
+	if (menu == 1)
+	{
+		double radius;
+		const double PI = 3.14159;
+		
+		//Prevent and handle negative inputs.
+		do
+		{
+			cout << "\nInput radius: ";
+			cin >> radius;
+		} while (radius < 0);
+
+		cout << "\nArea of circle = " << (PI * pow(radius,2));
+	}
+
+	//If menu == 2
+		//Input: length and width of rectangle
+			//NOT negative!
+		//Output: Rectangle area using (area = length * width)
+	else if (menu == 2)
+	{
+		double length;
+		double width;
+
+		//Prevent and handle negative numbers
+		do
+		{
+			cout << "\nEnter Length: ";
+			cin >> length;
+			cout << endl;
+			cout << "Enter Width: ";
+			cin >> width;
+
+		} while ((length < 0) || (width < 0));
+
+		cout << "\nRectangle Area: " << (length * width);
+	}
+
+	//If menu == 3
+	//Input: Triangle base and height
+		//NOT negative!
+	//Output: Area using (area = base * height * .5)
+	else if (menu == 3)
+	{
+		double base;
+		double height;
+		
+		//Prevent and handle negative numbers
+		do
+		{
+			cout << "\nEnter Base: ";
+			cin >> base;
+			cout << "\nEnter Height: ";
+			cin >> height;
+		} while ((base < 0) || (height < 0));
+		
+		cout << "\n Triangle Area: " << (base * height * .5);
+	}
+
+	//if menu == anything else
+		// Display error message
+	else
+	{
+		cout << "\nERROR: Invalid menu choice.\n";
+	}
+}
+
+static void TwentyFour_Long_Distance_Calls(void)
+{
+
+}
