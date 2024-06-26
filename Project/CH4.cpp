@@ -1374,5 +1374,53 @@ static void TwentyThree_Geometry(void)
 
 static void TwentyFour_Long_Distance_Calls(void)
 {
+	//Although book gives no instruction on what to do when a call period elapsed two time rates.
+
+	//00.00 to 06.59 = 0.05
+	//07.00 to 19.00 = 0.45
+	//19.01 to 23.59 = 0.20
+
+	double start_time;
+	int minutes_elapsed; //It is assumed minutes is in integer form.
+	bool is_valid = false;
+	double charge;
+
+	do
+	{
+		cout << "\nInput starting time of call (HH.MM): ";
+		cin >> start_time;
+		cout << "\nInput elapsed time in integer minutes: ";
+		cin >> minutes_elapsed;
+
+		if (!(start_time > 23.59) && !((start_time - static_cast<int>(start_time)) > 0.59))
+		{
+			//Although not a requirement, check the input is non-zero for calculations.
+			if (minutes_elapsed > 0)
+			{
+				is_valid = true;
+			}
+		}
+	} while(!is_valid);
+
+	//Identify charge
+	if ( (start_time >= 0) && (start_time <= 6.59))
+	{
+		charge = 0.05;
+	}
+	else if ((start_time >= 7) && (start_time <= 19))
+	{
+		charge = 0.45;
+	}
+	else // ((start_time >= 19.01) && (start_time <= 23.59))
+	{
+		charge = 0.20;
+	}
+	cout << fixed << setprecision(2);
+
+	cout << "\nCharges: $" << fixed << setprecision(2) << (charge * minutes_elapsed);
+}
+
+static void TwentyFive_Mobile_Servivce_Provider(void)
+{
 
 }

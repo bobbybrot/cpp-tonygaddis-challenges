@@ -5,3 +5,6 @@ UnitTest/UnitTest.vcxproj.user
 UnitTest/UnitTest.vcxproj
 UnitTest/x64
 /.vs
+/Project/Debug
+/Project/Project/Debug
+/Project/x64
