@@ -400,7 +400,7 @@ static void Twenty_Pizza_Pi(void)
 {
 	const float SLICE_AREA = 14.125f;
 	const float PI = 3.14159f;
-	const uint8_t HALF = 2;
+	const int HALF = 2;
 	float diameter;
 	float radius;
 	float area;
@@ -422,7 +422,7 @@ static void Twentyone_How_Many_Pizzas(void)
 	//This question copies and adapts previous exercise.
 	const float SLICE_AREA = 14.125f;
 	const float PI = 3.14159f;
-	const uint8_t HALF = 2;
+	const int HALF = 2;
 	const int SLICES_PER_PIZZA_AVG = 4;
 	float diameter;
 	int people;
