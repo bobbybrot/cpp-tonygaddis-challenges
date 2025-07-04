@@ -1,5 +1,6 @@
 #include "CH3.cpp"
 #include "CH4.cpp"
+#include "chatgpt_learn.cpp"
 
 int main()
 {
@@ -53,8 +54,11 @@ int main()
 	//TwentyOne_Speed_Sound_Grasses();
 	//TwentyTwo_Freezing_Boiling_Points();
 	//TwentyThree_Geometry();
-	TwentyFour_Long_Distance_Calls();
+	//TwentyFour_Long_Distance_Calls();
 	//END OF CHALLENGES FOR CHAPTER 4
+
+	chatgpt_learn();
+	//END OF CHATGPT LEARNING
 
 	return 0;
 }
